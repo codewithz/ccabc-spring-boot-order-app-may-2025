@@ -40,6 +40,7 @@ public class CustomerRepository {
 
     public String addCustomer(Customer customer){
         customers.add(customer);
+        System.out.println(customer);
         return "Customer Added Successfully";
     }
 

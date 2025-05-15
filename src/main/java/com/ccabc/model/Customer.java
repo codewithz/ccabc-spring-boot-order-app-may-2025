@@ -1,12 +1,17 @@
 package com.ccabc.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.time.LocalDate;
 
+@JsonIgnoreProperties(value = {"password"},allowSetters = true,allowGetters = false)
 public class Customer {
 
     private int id;
     private String name;
     private String email;
+
     private String password;
     private String phone;
     private LocalDate dateOfRegistration;
