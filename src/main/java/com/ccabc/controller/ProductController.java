@@ -2,6 +2,7 @@ package com.ccabc.controller;
 
 import com.ccabc.model.Product;
 import com.ccabc.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +33,7 @@ public class ProductController {
 
     // Add new product
     @PostMapping
-    public String addProduct(@RequestBody Product product) {
+    public String addProduct(@Valid @RequestBody Product product) {
         return productService.addProduct(product);
     }
 

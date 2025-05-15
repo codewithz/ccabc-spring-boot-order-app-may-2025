@@ -2,6 +2,7 @@ package com.ccabc.controller;
 
 import com.ccabc.model.Customer;
 import com.ccabc.service.CustomerService;
+import jakarta.validation.constraints.Positive;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -32,7 +33,7 @@ public class CustomerController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable(name = "id") int id) {
+    public ResponseEntity<Customer> getCustomerById(@Positive(message = "Negative Ids are not allowed") @PathVariable(name = "id") int id) {
         Customer customer=customerService.getCustomerById(id);
         return ResponseEntity.status(HttpStatus.OK).body(customer);
     }

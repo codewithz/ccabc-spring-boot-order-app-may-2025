@@ -1,10 +1,16 @@
 package com.ccabc.model;
 
+import jakarta.validation.constraints.*;
+
 public class Product {
 
+    @NotNull
     private int productId;
+    @NotEmpty
     private String name;
     private String description;
+    @DecimalMin(value = "3.00")
+    @DecimalMax(value = "100.00")
     private double price;
     private int stockQuantity;
 
