@@ -26,6 +26,9 @@ public class CustomerService {
     }
 
     public String addCustomer(Customer customer){
+        if(customer.getId()==10004){
+        throw new IllegalArgumentException("Invalid customer data");
+        }
         return customerRepository.addCustomer(customer);
     }
 
