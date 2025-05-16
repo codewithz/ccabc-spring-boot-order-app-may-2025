@@ -1,17 +1,31 @@
 package com.ccabc.model;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+@Entity
+@Table(name = "product")
 public class Product {
 
+    @Id
+    @Column(name = "product_id", nullable = false, updatable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     private int productId;
+
+    @Column(name = "name", nullable = false)
     @NotEmpty
     private String name;
+
+    @Column(name = "description", nullable = false)
     private String description;
+
+    @Column(name = "price", nullable = false)
     @DecimalMin(value = "3.00")
     @DecimalMax(value = "100.00")
     private double price;
+
+    @Column(name = "stock_quantity", nullable = false)
     private int stockQuantity;
 
 
