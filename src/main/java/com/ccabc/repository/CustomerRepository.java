@@ -49,4 +49,13 @@ public class CustomerRepository {
         customers.remove(customerToBeDeleted);
         return "Customer Deleted Successfully";
     }
+
+    public Customer findByEmail(String email) {
+        for (Customer customer : customers) {
+            if (customer.getEmail().equalsIgnoreCase(email)) {
+                return customer;
+            }
+        }
+        return null; // Return null if no customer is found with the given email
+    }
 }

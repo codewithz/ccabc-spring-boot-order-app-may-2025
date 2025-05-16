@@ -26,4 +26,11 @@ public class ProductService {
     public String deleteProduct(int productId){
         return productRepository.deleteProduct(productId);
     }
+
+    //Write a function to convert the currency  from AED to USD  maintain the precisiom to two decimal points
+
+
+
+
+
 }

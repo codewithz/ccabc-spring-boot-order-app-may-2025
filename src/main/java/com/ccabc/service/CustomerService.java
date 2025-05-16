@@ -33,5 +33,13 @@ public class CustomerService {
         return customerRepository.deleteCustomer(id);
     }
 
+    public boolean validateUser(String email, String password) {
+        Customer customer = customerRepository.findByEmail(email);
+        if (customer != null && customer.getPassword().equals(password)) {
+            return true;
+        }
+        return false;
+    }
+
 
 }
