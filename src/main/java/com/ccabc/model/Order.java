@@ -1,5 +1,6 @@
 package com.ccabc.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -25,6 +26,7 @@ public class Order {
     @OneToMany(mappedBy = "order",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
+    @JsonManagedReference
     private List<OrderItem> orderItems;
 
     public Order() {
