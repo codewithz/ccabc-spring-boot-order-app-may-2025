@@ -1,17 +1,30 @@
 package com.ccabc.model;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.List;
 
+@Entity
+@Table(name = "ordergeneral")
 public class Order {
-
+    @Id
+    @Column(name = "order_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int orderId;
+    @Column(name = "order_date")
     private LocalDate orderDate;
+    @Column(name = "customer_id")
     private int customerId;
+    @Column(name = "order_status")
     private String orderStatus;
+    @Column(name = "delivery_date")
     private LocalDate deliveryDate;
 
     // A list of items for this order
+    @OneToMany(mappedBy = "order",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private List<OrderItem> orderItems;
 
     public Order() {

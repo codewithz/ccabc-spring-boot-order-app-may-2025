@@ -1,26 +1,38 @@
 package com.ccabc.model;
 
-public class OrderItem {
+import jakarta.persistence.*;
 
-    private int orderId;
+@Entity
+@Table(name = "orderitem")
+public class OrderItem {
+    @Id
+    @Column(name = "order_item_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int orderItemId;
+    @Column(name = "product_id")
     private int productId;
+    @Column(name = "quantity")
     private int quantity;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    Order order;
 
     public OrderItem() {
     }
 
-    public OrderItem(int orderId, int productId, int quantity) {
-        this.orderId = orderId;
+    public OrderItem(int orderItemId, int productId, int quantity) {
+        this.orderItemId = orderItemId;
         this.productId = productId;
         this.quantity = quantity;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public int getOrderItemId() {
+        return orderItemId;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setOrderItemId(int orderItemId) {
+        this.orderItemId = orderItemId;
     }
 
     public int getProductId() {
