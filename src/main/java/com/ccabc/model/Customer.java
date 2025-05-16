@@ -2,18 +2,30 @@ package com.ccabc.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.time.LocalDate;
 
+@Entity
+@Table(name="customer")
 @JsonIgnoreProperties(value = {"password"},allowSetters = true,allowGetters = false)
 public class Customer {
-
+    @Id
+    @Column(name="id",nullable = false,updatable = false)
     private int id;
-    private String name;
-    private String email;
 
+    @Column(name="name",nullable = false)
+    private String name;
+    @Column(name="email",nullable = false,unique = true)
+    private String email;
+    @Column(name="password",nullable = false)
     private String password;
+    @Column(name="phone",nullable = false)
     private String phone;
+    @Column(name="date_of_registration",nullable = false)
     private LocalDate dateOfRegistration;
 
     public Customer() {

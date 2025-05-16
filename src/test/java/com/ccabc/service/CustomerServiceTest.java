@@ -1,7 +1,7 @@
 package com.ccabc.service;
 
 import com.ccabc.model.Customer;
-import com.ccabc.repository.CustomerRepository;
+import com.ccabc.repository.CustomerRepositoryWithoutJPA;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 class CustomerServiceTest {
 
     @Mock
-    private CustomerRepository customerRepository;
+    private CustomerRepositoryWithoutJPA customerRepository;
 
     @InjectMocks
     private CustomerService customerService;
